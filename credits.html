@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Credits</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #6a11cb, #2575fc, #00c6ff);
+      background-size: 300% 300%;
+      animation: gradientShift 10s ease infinite;
+      color: white;
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 40px 60px;
+      text-align: center;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    li {
+      font-size: 1.4rem;
+      margin: 12px 0;
+      transition: transform 0.2s ease;
+    }
+
+    li:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Credits to...</h1>
+    <ul>
+      <li><a href="mailto:andre@wolfdrive.fun">André P</a> - Founder</li>
+      <li><a href="mailto:xiao@wolfdrive.fun">Xiao</a> - Manager</li>
+      <li>Danny - Storage Provider</li>
+    </ul>
+  </div>
+</body>
+</html>
