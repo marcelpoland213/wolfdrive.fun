@@ -154,11 +154,15 @@
 
         .action-container {
             display: flex;
-            flex-direction: row;
-            gap: 1.2rem;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .button-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
         .live-text {
@@ -234,15 +238,17 @@
             </div>
         </div>
 
-        <div class="action-container">
-            <span class="live-text">We're live!! View our <a href="https://wolfdrive.fun/credits">Contributors.</a></span>
-            <!-- Redirect Link Here -->
+    <div class="action-container">
+        <span class="live-text">
+            We're live!! View our <a href="https://wolfdrive.fun/credits">Contributors.</a>
+        </span>
+    
+        <div class="button-row">
             <a href="https://bridge.wolfdrive.fun" class="btn-link">Public Storage (Coming soon!)</a>
-
-            <span class="september">|</span>
-            
+            <span>|</span>
             <a href="https://storage.wolfdrive.fun" class="btn-link">Private Storage</a>
         </div>
+    </div>
     </div>
 
 </body>
