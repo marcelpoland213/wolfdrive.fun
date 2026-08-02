@@ -93,7 +93,7 @@ Harmful or Abusive Content
 
 5. Malware and Security Enforcement
 
-WolfDrive may use automated systems, security scanning, user reports, and other measures to identify files that may pose security risks.
+WolfDrive may use user reports to identify files that may pose security risks.
 
 If a file is suspected of containing malware or being used for malicious purposes, WolfDrive may:
 
