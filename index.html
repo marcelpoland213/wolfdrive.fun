@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,21 +13,13 @@
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
         }
-        
-        .september {
-          color: white;
-          font-size: 8rem;
-          font-weight: bold;
-          margin: 0 16px;
-          vertical-align: middle;
-        }
 
         body {
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(-45deg, #0f172a, #1e1b4b, #312e81, #020617);
+            background: linear-gradient(-45deg, #090d16, #111827, #1f1938, #030712);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
             overflow-x: hidden;
@@ -44,6 +36,7 @@
 
         /* Glassmorphism Card UI */
         .ui-card {
+            position: relative;
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
@@ -63,6 +56,39 @@
         .ui-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.5rem;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 0.3rem 0.5rem;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.1);
+        }
+
+        .lang-btn.active {
+            border-color: #818cf8;
+            background: rgba(129, 140, 248, 0.3);
         }
         
         /* Footer */
@@ -156,12 +182,6 @@
             margin-bottom: 0.6rem;
         }
 
-        .notice-content .shoutout {
-            color: #cbd5e1;
-            font-style: italic;
-            margin-top: 0.8rem;
-        }
-
         .notice-footer {
             margin-top: 1rem;
             padding-top: 0.6rem;
@@ -237,42 +257,107 @@
 <body>
 
     <div class="ui-card">
+        <!-- Language Switcher -->
+        <div class="lang-switcher">
+            <button class="lang-btn" onclick="setLanguage('en')" id="btn-en" title="English">🇬🇧</button>
+            <button class="lang-btn" onclick="setLanguage('pl')" id="btn-pl" title="Polski">🇵🇱</button>
+        </div>
+
         <div class="logo-container">
             <span class="logo-icon">🐺</span>
             <h1 class="title">WolfDrive</h1>
         </div>
         
-        <p class="subtitle">The next generation of cloud storage.</p>
+        <p class="subtitle" id="subtitle">Chmura nowej generacji.</p>
         
         <!-- ATTENTION NOTICE BOX -->
         <div class="notice-box">
             <div class="notice-header">
                 <span>⚠️</span>
-                <span>Attention WolfDrive Users</span>
+                <span id="notice-title">Uwaga Użytkownicy WolfDrive</span>
             </div>
             <div class="notice-content">
-                <p>Our services may come back in 29.11, please track info by going on this website only!! (wolfdrive.fun)</p>
+                <p id="notice-body">Nasze usługi mogą powrócić 29.11, prosimy śledzić informacje wyłącznie na tej stronie!! (wolfdrive.fun)</p>
             </div>
-            <div class="notice-footer">
-                — Thanks, WolfDrive
+            <div class="notice-footer" id="notice-footer">
+                — Dziękujemy, WolfDrive
             </div>
         </div>
 
-    <div class="action-container">
-        <span class="live-text">
-            We're live!! View our <a href="https://wolfdrive.fun/contacts">Contacts.</a>
-        </span>
-    
-        <div class="button-row">
-            <a href="https://bridge.wolfdrive.fun" class="btn-link">Public Storage</a>
-            <span>|</span>
-            <a href="https://storage.wolfdrive.fun" class="btn-link">Private Storage</a>
+        <div class="action-container">
+            <span class="live-text" id="live-text">
+                Działamy na żywo!! Zobacz nasze <a href="https://wolfdrive.fun/contacts" id="contacts-link">Kontakty.</a>
+            </span>
+        
+            <div class="button-row">
+                <a href="https://bridge.wolfdrive.fun" class="btn-link" id="btn-public">Dysk Publiczny</a>
+                <span>|</span>
+                <a href="https://storage.wolfdrive.fun" class="btn-link" id="btn-private">Dysk Prywatny</a>
+            </div>
         </div>
-    </div>
-            <footer class="footer">
-            <a href="https://wolfdrive.fun/ToS.md">Terms of Service</a>
+
+        <footer class="footer">
+            <a href="https://wolfdrive.fun/ToS.md" id="tos-link">Warunki Korzystania z Usługi</a>
         </footer>
     </div>
 
+    <script>
+        const translations = {
+            en: {
+                subtitle: "The next generation of cloud storage.",
+                noticeTitle: "Attention WolfDrive Users",
+                noticeBody: "Our services may come back in 29.11, please track info by going on this website only!! (wolfdrive.fun)",
+                noticeFooter: "— Thanks, WolfDrive",
+                liveText: "We're live!! View our ",
+                contactsText: "Contacts.",
+                btnPublic: "Public Storage",
+                btnPrivate: "Private Storage",
+                tosText: "Terms of Service"
+            },
+            pl: {
+                subtitle: "Chmura nowej generacji.",
+                noticeTitle: "Uwaga Użytkownicy WolfDrive",
+                noticeBody: "Nasze usługi mogą powrócić 29.11, prosimy śledzić informacje wyłącznie na tej stronie!! (wolfdrive.fun)",
+                noticeFooter: "— Dziękujemy, WolfDrive",
+                liveText: "Działamy na żywo!! Zobacz nasze ",
+                contactsText: "Kontakty.",
+                btnPublic: "Dysk Publiczny",
+                btnPrivate: "Dysk Prywatny",
+                tosText: "Warunki Korzystania z Usługi"
+            }
+        };
+
+        function setLanguage(lang) {
+            const t = translations[lang];
+            
+            document.getElementById('subtitle').innerText = t.subtitle;
+            document.getElementById('notice-title').innerText = t.noticeTitle;
+            document.getElementById('notice-body').innerText = t.noticeBody;
+            document.getElementById('notice-footer').innerText = t.noticeFooter;
+            
+            // Live text & link
+            const liveTextEl = document.getElementById('live-text');
+            liveTextEl.childNodes[0].nodeValue = t.liveText;
+            document.getElementById('contacts-link').innerText = t.contactsText;
+
+            // Buttons & Footer
+            document.getElementById('btn-public').innerText = t.btnPublic;
+            document.getElementById('btn-private').innerText = t.btnPrivate;
+            document.getElementById('tos-link').innerText = t.tosText;
+
+            // Active button state
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('btn-pl').classList.toggle('active', lang === 'pl');
+            
+            document.documentElement.lang = lang;
+
+            // Zapis wybranego języka w localStorage
+            localStorage.setItem('wolfdrive_lang', lang);
+        }
+
+        // Automatyczne odczytanie zapisanego języka przy załadowaniu strony (domyślnie 'pl')
+        const savedLang = localStorage.getItem('wolfdrive_lang') || 'pl';
+        setLanguage(savedLang);
+    </script>
 </body>
 </html>
